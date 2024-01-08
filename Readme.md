@@ -1,5 +1,3 @@
-Here is the README with the previous responses combined:
-
 # Secure IoT-Enabled Wearable Devices
 
 ## Overview
