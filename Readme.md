@@ -1,6 +1,8 @@
-#Secure IoT-Enabled Wearable Devices
+Here is the README with the previous responses combined:
 
-##Overview
+# Secure IoT-Enabled Wearable Devices
+
+## Overview
 
 This software system secures IoT-enabled wearable devices like smart watches, fitness trackers, etc that collect sensitive user data. It implements multifactor authentication and encryption to prevent unauthorized access. 
 
@@ -12,7 +14,7 @@ The system involves:
 - Authentication module
 - Database
 
-##Wearable IoT Sensors
+## Wearable IoT Sensors
 
 The sensors in wearable devices capture user activity data like step count, heart rate, location, etc. Each sensor has a unique ID for identification.
 
@@ -23,7 +25,7 @@ Security features:
 - Hardware enhancements like secure enclaves will enable on-sensor encryption.
 - Firmware updates to patch vulnerabilities. Digitally signed.
 
-##Mobile App
+## Mobile App
 
 The mobile app allows users to access their wearable device data. 
 
@@ -35,7 +37,7 @@ Security features:
 - HTTPS/TLS for secure communications with server.  
 - Local encryption of data like biometrics.
 
-##Web Server 
+## Web Server 
 
 Hosts the application interface and logic for users.
 
@@ -46,7 +48,7 @@ Security features:
 - Input validation and SQL injection prevention. DDoS protection.  
 - Communications over HTTPS using latest TLS protocol.
 
-##Authentication Module
+## Authentication Module
 
 Handles user verification and device pairing via one-time passwords.
 
@@ -56,7 +58,7 @@ Security features:
 - Issues short-lived OTPs for associating a user and wearable sensor.  
 - Manages keys for sensor data encryption/decryption.
 
-##Database 
+## Database 
 
 Stores user activity data collected from sensors. 
 
@@ -68,6 +70,6 @@ Security features:
 - Backups and replication prevent data loss.
 - Monitoring to detect potential breaches. 
 
-##Conclusion
+## Conclusion
 
 This system secures sensitive user data from wearable devices using multifactor authentication, encryption, access controls, patching, etc. The layered approach protects data confidentiality and integrity.
