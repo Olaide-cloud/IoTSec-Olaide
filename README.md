@@ -62,7 +62,7 @@ Stores user activity data collected from sensors.
 
 Security features:
 
-- Encryption of data at rest via AES-256. Access controls limit visibility.
+- Encryption of data at rest via AES-128. Access controls limit visibility.
 - Private isolated network secures database. Hardened OS. 
 - Compliant with regulations like HIPAA for healthcare data.
 - Backups and replication prevent data loss.
