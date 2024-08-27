@@ -32,8 +32,8 @@ function aesDecrypt($encryptionKey, $encryptedData){
     // Convert encrypted data from base64 to raw binary
     $encryptedDataBinary = base64_decode($encryptedData);
     
-    // Decrypt the data using AES-256-ECB
-    $decryptedData = openssl_decrypt($encryptedDataBinary, 'aes-256-ecb', $encryptionKey, OPENSSL_RAW_DATA);
+    // Decrypt the data using aes-128-ecb
+    $decryptedData = openssl_decrypt($encryptedDataBinary, 'aes-128-ecb', $encryptionKey, OPENSSL_RAW_DATA);
     
     if ($decryptedData === false) {
         // Handle decryption error
@@ -45,8 +45,8 @@ function aesDecrypt($encryptionKey, $encryptedData){
 
 function aesEncrypt($encryptionKey, $dataToEncrypt){
     
-    // Encrypt the data using AES-256-ECB
-    $encryptedData = openssl_encrypt($dataToEncrypt, 'aes-256-ecb', $encryptionKey, OPENSSL_RAW_DATA);
+    // Encrypt the data using aes-128-ecb
+    $encryptedData = openssl_encrypt($dataToEncrypt, 'aes-128-ecb', $encryptionKey, OPENSSL_RAW_DATA);
     
     // Convert encrypted data to base64 to make it safe to handle
     $encryptedDataBase64 = base64_encode($encryptedData);
@@ -171,31 +171,31 @@ if(isset($_POST['login'])) {
 
   if(isset($_POST['sensor_data'])) {
 
-  // Get form data
-  $enc_key = $_POST['fingerprintSecret'];
-  $macid = $_POST['sensor_id'] ;
-  $temp = aesEncrypt($enc_key,$_POST['temp'] ) ;
+    // Get form data
+    $enc_key = $_POST['fingerprintSecret'];
+    $macid = $_POST['sensor_id'] ;
+    $temp = aesEncrypt($enc_key,$_POST['temp'] ) ;
 
-  // Validate form data
+    // Validate form data
 
-  // Get user id
-  $userid_query = "SELECT id FROM users WHERE iot = '$macid' LIMIT 1";
-  $userid_result = $conn->query($userid_query); 
-  if($userid_result->num_rows == 1) {
-    $userid = $userid_result->fetch_row()[0]; 
-  } else {
-    $userid = 0;
-  }
+    // Get user id
+    $userid_query = "SELECT id FROM users WHERE iot = '$macid' LIMIT 1";
+    $userid_result = $conn->query($userid_query); 
+    if($userid_result->num_rows == 1) {
+      $userid = $userid_result->fetch_row()[0]; 
+    } else {
+      $userid = 0;
+    }
 
-  // Insert data
-  $insert_query = "INSERT INTO sensor_data (userid, temp, sensor_id, ekey) VALUES ('$userid', '$temp','$macid','$enc_key')";
-  
-  if($conn->query($insert_query) === TRUE) {
-      echo json_encode(['success' => 'Data Added Successfully']);
-  }
-  else {
-      echo json_encode(['error' => "Error inserting record: " . $conn->error]);
-  }
+    // Insert data
+    $insert_query = "INSERT INTO sensor_data (userid, temp, sensor_id, ekey) VALUES ('$userid', '$temp','$macid','$enc_key')";
+    
+    if($conn->query($insert_query) === TRUE) {
+        echo json_encode(['success' => 'Data Added Successfully']);
+    }
+    else {
+        echo json_encode(['error' => "Error inserting record: " . $conn->error]);
+    }
 
 }
 
